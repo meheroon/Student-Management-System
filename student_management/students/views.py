@@ -1,8 +1,10 @@
-from django.shortcuts import render
+
 
 # Create your views here.
 from django.shortcuts import render, redirect
 from .forms import StudentForm
+from .models import Student
+from django.shortcuts import get_object_or_404
 
 def add_student(request):
     if request.method == 'POST':
@@ -15,7 +17,7 @@ def add_student(request):
     return render(request, 'students/add_student.html', {'form': form})
 
 
-from .models import Student
+
 
 def student_list(request):
     students = Student.objects.all()
@@ -32,7 +34,7 @@ def edit_student(request, student_id):
         form = StudentForm(instance=student)
     return render(request, 'students/edit_student.html', {'form': form})
 
-from django.shortcuts import get_object_or_404
+
 
 def delete_student(request, student_id):
     student = get_object_or_404(Student, id=student_id)
