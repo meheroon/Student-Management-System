@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ student.name }}</h2>
+<p>Email: {{ student.email }}</p>
+<p>Phone: {{ student.phone }}</p>
+<p>Course: {{ student.course }}</p>
+<a href="{% url 'student_edit' student.pk %}">Edit</a>
+{% endblock %}
